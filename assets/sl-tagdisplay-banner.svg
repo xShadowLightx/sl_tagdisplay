@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">SL Tag Display</title>
+  <desc id="desc">A theme-aware banner with a player silhouette between headtag and gangtag nameplates.</desc>
+  <style>
+    .canvas{fill:#f4f8fc}.grid{stroke:#d9e4ee}.orb-a{fill:#dff5f1}.orb-b{fill:#e5ecff}
+    .panel{fill:#fff;stroke:#d6e2ee}.panel-soft{fill:#f6f9fc}.headplate{fill:#fff;stroke:#b8e8df}
+    .body{fill:#4d6a84}.gangplate{fill:#fff;stroke:#d7dfef}.title{fill:#14283b}.eyebrow{fill:#138c83}
+    .subtitle{fill:#4a6075}.micro{fill:#71869a}
+    @media (prefers-color-scheme: dark){
+      .canvas{fill:#101722}.grid{stroke:#263446}.orb-a{fill:#123c3a}.orb-b{fill:#202c50}
+      .panel{fill:#172333;stroke:#2b3d52}.panel-soft{fill:#121d2b}.headplate{fill:#182b37;stroke:#236c65}
+      .body{fill:#718ba5}.gangplate{fill:#182333;stroke:#394565}.title{fill:#f1f6fc}.eyebrow{fill:#5fe0c4}
+      .subtitle{fill:#b6c6d7}.micro{fill:#8299af}
+    }
+  </style>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" class="grid" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22b8a5"/><stop offset="1" stop-color="#4a7df0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="360" rx="28" class="canvas"/>
+  <rect width="1200" height="360" rx="28" fill="url(#grid)" opacity=".58"/>
+  <circle cx="1030" cy="52" r="155" class="orb-a" opacity=".7"/>
+  <circle cx="1100" cy="308" r="148" class="orb-b" opacity=".8"/>
+  <rect x="50" y="52" width="418" height="256" rx="24" class="panel" stroke-width="2"/>
+  <rect x="76" y="78" width="366" height="204" rx="18" class="panel-soft"/>
+  <rect x="126" y="98" width="266" height="46" rx="12" class="headplate" stroke-width="2"/>
+  <rect x="141" y="110" width="18" height="22" rx="4" fill="#22b8a5"/>
+  <rect x="171" y="113" width="126" height="8" rx="4" class="title"/>
+  <rect x="171" y="127" width="80" height="5" rx="2.5" class="micro" opacity=".75"/>
+  <rect x="246" y="159" width="54" height="54" rx="10" fill="url(#accent)"/>
+  <rect x="260" y="172" width="26" height="26" rx="5" fill="#fff" opacity=".94"/>
+  <path d="M238 220h70v15h-70z" class="body"/>
+  <rect x="126" y="244" width="266" height="24" rx="8" class="gangplate" stroke-width="2"/>
+  <rect x="141" y="251" width="12" height="10" rx="3" fill="#7588ef"/>
+  <rect x="165" y="253" width="96" height="5" rx="2.5" class="subtitle"/>
+  <text x="530" y="115" class="eyebrow" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">PLAYER NAMEPLATES</text>
+  <text x="526" y="184" class="title" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="1">SL TAG DISPLAY</text>
+  <rect x="530" y="211" width="88" height="5" rx="2.5" fill="url(#accent)"/>
+  <text x="530" y="258" class="subtitle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="500">Headtags above. Gangtags below.</text>
+  <text x="530" y="296" class="micro" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="2">PAPER  •  JAVA EDITION</text>
+</svg>

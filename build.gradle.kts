@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "io.github.shadowlight"
-version = "0.1.0-SNAPSHOT"
+version = "1.0.0"
 
 val paperTarget = providers.gradleProperty("paperTarget").orElse("26.3").get()
 val isLegacyTarget = paperTarget == "1.21.11"
@@ -18,11 +18,15 @@ val javaLevel = if (isLegacyTarget) 21 else 25
 val targetClassifier = if (isLegacyTarget) "paper-1.21.11" else "paper-$paperTarget-plus"
 
 repositories {
+    mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.extendedclip.com/releases/")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:$paperApiVersion")
+    compileOnly("me.clip:placeholderapi:2.12.3")
+    compileOnly("net.dv8tion:JDA:6.7.0")
 }
 
 java {

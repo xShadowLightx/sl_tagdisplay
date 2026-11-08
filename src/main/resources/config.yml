@@ -1,14 +1,41 @@
 # Tag text supports MiniMessage formatting. Keep tags concise so they fit above
-# or below a player's name. Each permission grants access to that tag.
+# or below a player's name. Use permission nodes or Discord role IDs according
+# to access.mode.
+access:
+  # Options: permissions, discordsrv, builtin-discord.
+  # Set to permissions to disable Discord access and use the permission nodes
+  # configured on each tag as the sole access check.
+  mode: permissions
+  # A configured permission node always grants access, even in Discord modes.
+  # This additionally allows the permission node to grant access if Discord is
+  # unavailable or still loading. Leave false to fail closed for role-only users.
+  fallback-to-permissions: false
+  discord:
+    # Discord server ID used by DiscordSRV and the built-in bot.
+    guild-id: ""
+    # The built-in bot reads its token from this environment variable name.
+    token-environment-variable: "SLTAGDISPLAY_DISCORD_TOKEN"
+    # One-time link codes are short lived and usable once.
+    link-code-lifetime-seconds: 300
+
 headtags:
   example:
     display: "<aqua>Example Headtag"
     permission: "sltagdisplay.headtag.example"
+    discord-roles: []
+    icon: NAME_TAG
 gangtags:
   example:
     display: "<gray>[Example Gang]"
     permission: "sltagdisplay.gangtag.example"
+    discord-roles: []
+    icon: IRON_NUGGET
 
 settings:
   # Unset selections remain empty; players select tags through their menus.
-  clear-selection-on-permission-loss: true
+  clear-selection-on-access-loss: true
+
+# Checks GitHub Releases on startup. Set enabled to false to disable it.
+update-check:
+  enabled: true
+  repository: "xShadowLightx/sl_tagdisplay"

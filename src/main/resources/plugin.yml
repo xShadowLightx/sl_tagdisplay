@@ -7,6 +7,9 @@ author: shadowlight
 softdepend:
   - LuckPerms
   - PlaceholderAPI
+  - DiscordSRV
+libraries:
+  - net.dv8tion:JDA:6.7.0
 commands:
   headtag:
     description: Choose your active headtag.
@@ -16,8 +19,11 @@ commands:
     usage: /gangtag
   tagdisplay:
     description: Manage SL Tag Display.
-    usage: /tagdisplay <reload|help>
+    usage: /tagdisplay <reload|link|unlink|help>
 permissions:
   sltagdisplay.admin:
     description: Manage tag definitions and reload the plugin configuration.
+    default: op
+  sltagdisplay.update-notify:
+    description: Receives a clickable notification when a newer GitHub release is available.
     default: op

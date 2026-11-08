@@ -1,8 +1,10 @@
-# SL Tag Display <>!
+<img src="assets/sl-tagdisplay-banner.svg" alt="SL Tag Display banner" width="100%">
 
-SL Tag Display is a Minecraft Java plugin for Paper servers. It is designed to let each player choose a headtag and a gangtag from tags they have permission to use, then show each tag in its own place around the player's name.
+# SL Tag Display
 
-The project is in early development. This README describes the intended behavior; display rendering, menus, saved player choices, and integrations are not implemented yet. We’ll keep this page up to date as those features are built.
+SL Tag Display is a Minecraft Java plugin for Paper servers. Players choose a headtag and a gangtag from tags they are allowed to use, and the plugin displays each in its own place around their name.
+
+The project is in early development. The current build includes tag displays, selection menus and saved choices, permission and Discord role access, Discord account linking, and a PlaceholderAPI headtag placeholder. We’ll keep this page up to date as the plugin grows.
 
 ## What the plugin will do
 
@@ -21,7 +23,11 @@ The project is in early development. This README describes the intended behavior
 ### Player choices and permissions
 
 - Players choose their own active headtag and gangtag from in-game menus.
-- Permission nodes determine which tags each player may select. LuckPerms can manage those permissions, including through the server's existing group and Discord-role setup.
+- Access can use permission nodes, DiscordSRV-linked Discord roles, or the plugin's optional built-in Discord bot and account-link flow. Choose one with `access.mode` in `config.yml`.
+- A tag's permission node always grants access, including in either Discord mode. A Discord role can also grant access to a player who does not have that permission node.
+- Discord access can be switched off completely by setting `access.mode: permissions`. Permission nodes then become the sole access method. `fallback-to-permissions: true` can additionally grant access from a tag's permission node when the selected Discord provider is unavailable or still loading.
+- Each tag can list multiple Discord role IDs, and one Discord role can be listed on multiple tags. When permission fallback is enabled, configure a permission node on every Discord-gated tag too.
+- LuckPerms can manage the permission nodes, along with any other compatible permissions plugin.
 - Players cannot create or edit tag definitions.
 - A player's headtag and gangtag choices are saved separately.
 
@@ -44,9 +50,14 @@ The 1.21.11 build is for testing the plugin on that server version. The builds u
 
 ## Optional integrations
 
-- **LuckPerms:** provides the permission groups and nodes used to grant access to tags. The plugin will use normal server permissions so tag access can also be managed by another compatible permissions plugin.
-- **PlaceholderAPI:** provides the headtag placeholder for chat-format plugins. PlaceholderAPI is optional; headtag and gangtag display should work without it.
+- **DiscordSRV:** can supply linked account and Discord role information without requiring this plugin to run its own bot.
+- **Built-in Discord bot:** optional alternative to DiscordSRV. Players run `/tagdisplay link`, then use the one-time code with the bot's `/sltagdisplay link` Discord command. Set the bot token in the environment variable named by `access.discord.token-environment-variable`; the default is `SLTAGDISPLAY_DISCORD_TOKEN`. The bot needs the Server Members privileged intent enabled in the Discord Developer Portal.
+- **LuckPerms:** can manage permission nodes used directly or as a fallback. The plugin uses normal server permission checks.
+- **PlaceholderAPI:** provides `%sltagdisplay_headtag%` for chat-format plugins. PlaceholderAPI is optional; in-world displays work without it.
 - **TAB:** the plugin will not modify TAB's player list formatting.
+- **GitHub Releases:** on startup, the plugin checks the configured repository for a newer release. Operators receive a clickable release notice in chat when an update is available. Set `update-check.enabled: false` to turn this off.
+
+To use only permission nodes, set `access.mode: permissions`; no Discord connection is started. Permission nodes always grant access regardless of role membership. Set `access.fallback-to-permissions: true` if you also want permission nodes to grant access to players who lack a Discord role while Discord is unavailable or still loading.
 
 ## Build
 
@@ -61,11 +72,11 @@ The output JAR filename identifies its target. The Paper version can be changed 
 
 ## Current implementation status
 
-- Project scaffold and build targets: added, not yet built or verified.
-- Tag configuration examples and plugin metadata: added.
-- Headtag and gangtag rendering: planned.
-- Player selection menus and saved choices: planned.
-- Permission checks, admin management, and live reload: planned.
-- PlaceholderAPI expansion: planned.
+- Project scaffold and both Paper build targets: implemented and built.
+- Tag configuration, menus, saved choices, display entities, and permission/Discord role checks: implemented.
+- DiscordSRV role lookup and optional built-in Discord bot/link flow: implemented; needs configuration and live-server verification.
+- PlaceholderAPI headtag expansion: implemented and optional.
+- GitHub release update check and startup banner: implemented.
+- In-game creation/editing of tag definitions: not yet implemented; configure tags in `config.yml`.
 
 See [`docs/requirements.md`](docs/requirements.md) for the fuller requirements and design notes.
