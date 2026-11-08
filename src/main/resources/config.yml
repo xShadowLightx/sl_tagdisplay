@@ -1,0 +1,14 @@
+# Tag text supports MiniMessage formatting. Keep tags concise so they fit above
+# or below a player's name. Each permission grants access to that tag.
+headtags:
+  example:
+    display: "<aqua>Example Headtag"
+    permission: "sltagdisplay.headtag.example"
+gangtags:
+  example:
+    display: "<gray>[Example Gang]"
+    permission: "sltagdisplay.gangtag.example"
+
+settings:
+  # Unset selections remain empty; players select tags through their menus.
+  clear-selection-on-permission-loss: true

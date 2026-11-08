@@ -1,0 +1,2 @@
+# Player selections are stored by UUID and maintained separately from tag definitions.
+players: {}

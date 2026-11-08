@@ -1,0 +1,23 @@
+name: SLTagDisplay
+version: '${pluginVersion}'
+main: io.github.shadowlight.tagdisplay.SLTagDisplayPlugin
+api-version: '${paperApiLevel}'
+description: Player-selected headtags and gangtags for Paper servers.
+author: shadowlight
+softdepend:
+  - LuckPerms
+  - PlaceholderAPI
+commands:
+  headtag:
+    description: Choose your active headtag.
+    usage: /headtag
+  gangtag:
+    description: Choose your active gangtag.
+    usage: /gangtag
+  tagdisplay:
+    description: Manage SL Tag Display.
+    usage: /tagdisplay <reload|help>
+permissions:
+  sltagdisplay.admin:
+    description: Manage tag definitions and reload the plugin configuration.
+    default: op
